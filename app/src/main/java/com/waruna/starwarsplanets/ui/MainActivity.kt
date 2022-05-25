@@ -1,5 +1,6 @@
 package com.waruna.starwarsplanets.ui
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.waruna.starwarsplanets.adapters.PlanetsAdapter
 import com.waruna.starwarsplanets.databinding.ActivityMainBinding
 import com.waruna.starwarsplanets.models.Planet
+import com.waruna.starwarsplanets.util.PaginationScrollListener
 import com.waruna.starwarsplanets.util.Resource
 import com.waruna.starwarsplanets.util.ResourceState
 import com.waruna.starwarsplanets.viewmodels.MainViewModel
@@ -31,6 +33,18 @@ class MainActivity : AppCompatActivity(), (Planet) -> Unit {
         binding.recyclerPlanets.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = planetsAdapter
+            addOnScrollListener(object : PaginationScrollListener(
+                layoutManager as LinearLayoutManager
+            ) {
+                override fun loadMoreItems() {
+                    model.currentPage++
+                    model.getPlanets()
+                }
+
+                override fun isLastPage(): Boolean = model.isLastPage
+
+                override fun isLoading(): Boolean = model.isLoading
+            })
         }
 
         model.liveDataPlanets.observe(this) { handlePlanets(it) }
@@ -54,6 +68,7 @@ class MainActivity : AppCompatActivity(), (Planet) -> Unit {
                     val dialog = AlertDialog.Builder(this)
                         .setTitle("Alert")
                         .setMessage(it.message)
+                        .setPositiveButton("OK") { _, _ -> }
                         .create()
                     dialog.show()
                 }

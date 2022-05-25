@@ -21,16 +21,22 @@ class MainViewModel @Inject constructor(private val planetApi: PlanetApi) : View
 
     val liveDataPlanets = MutableLiveData<Resource<List<Planet>>>()
 
+    var currentPage = 1
+    var isLoading = false
+    var isLastPage = false
+
     fun getPlanets() {
+        isLoading = true
         liveDataPlanets.setLoading()
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = planetApi.getPlanets(1)
+                val response = planetApi.getPlanets(currentPage)
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
                         response.body()?.results?.let {
                             liveDataPlanets.setSuccess(it)
                         }
+                        isLastPage = response.body()?.next == null
                     } else {
                         liveDataPlanets.setError(response.message())
                     }
@@ -38,6 +44,7 @@ class MainViewModel @Inject constructor(private val planetApi: PlanetApi) : View
             } catch (ex: Exception) {
                 liveDataPlanets.setError("Something went wrong!")
             }
+            isLoading = false
         }
     }
 
