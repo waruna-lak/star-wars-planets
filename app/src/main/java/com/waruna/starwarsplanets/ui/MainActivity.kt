@@ -1,6 +1,7 @@
 package com.waruna.starwarsplanets.ui
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.waruna.starwarsplanets.adapters.PlanetsAdapter
 import com.waruna.starwarsplanets.databinding.ActivityMainBinding
 import com.waruna.starwarsplanets.models.Planet
+import com.waruna.starwarsplanets.util.Constants.EXTRA_PLANET
 import com.waruna.starwarsplanets.util.PaginationScrollListener
 import com.waruna.starwarsplanets.util.Resource
 import com.waruna.starwarsplanets.util.ResourceState
@@ -52,7 +54,9 @@ class MainActivity : AppCompatActivity(), (Planet) -> Unit {
     }
 
     override fun invoke(planet: Planet) {
-        // open details
+        val intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra(EXTRA_PLANET, planet)
+        startActivity(intent)
     }
 
     private fun handlePlanets(resource: Resource<List<Planet>>) {

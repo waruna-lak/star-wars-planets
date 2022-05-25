@@ -3,4 +3,5 @@
     <string name="planet_name">Planet Name</string>
     <string name="orbital_period">Orbital Period</string>
     <string name="gravity">Gravity</string>
+    <string name="details">Details</string>
 </resources>
