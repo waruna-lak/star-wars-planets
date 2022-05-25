@@ -28,6 +28,11 @@ class PlanetsAdapter(
 
     override fun getItemCount(): Int = list.size
 
+    fun addItems(list: List<Planet>) {
+        this.list.addAll(list)
+        notifyDataSetChanged()
+    }
+
     inner class ViewHolder(private val binding: ItemPlanetBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(planet: Planet) {
