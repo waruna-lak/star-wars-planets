@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.waruna.starwarsplanets.databinding.ItemPlanetBinding
 import com.waruna.starwarsplanets.models.Planet
+import com.waruna.starwarsplanets.util.Constants.IMAGE_URL
 import com.waruna.starwarsplanets.util.loadImage
 
 /**
@@ -38,7 +39,7 @@ class PlanetsAdapter(
         fun bind(planet: Planet) {
             binding.textName.text = planet.name
             binding.textClimate.text = planet.climate
-            binding.imageIcon.loadImage("https://picsum.photos/id/1/200/200.jpg")
+            binding.imageIcon.loadImage(IMAGE_URL)
 
             binding.root.setOnClickListener {
                 callback.invoke(planet)

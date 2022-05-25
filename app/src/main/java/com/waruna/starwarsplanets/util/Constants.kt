@@ -5,4 +5,5 @@ package com.waruna.starwarsplanets.util
  */
 object Constants {
     const val BASE_URL = "https://swapi.dev/api/"
+    const val IMAGE_URL = "https://picsum.photos/id/1/200/200.jpg"
 }

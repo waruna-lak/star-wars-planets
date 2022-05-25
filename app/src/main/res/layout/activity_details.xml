@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.DetailsActivity">
+
+    <TextView
+        android:id="@+id/text_name_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/planet_name"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Name"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintEnd_toEndOf="@+id/text_name_title"
+        app:layout_constraintStart_toStartOf="@+id/text_name_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_name_title" />
+
+    <TextView
+        android:id="@+id/text_orbit_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/orbital_period"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:layout_constraintEnd_toEndOf="@+id/text_name"
+        app:layout_constraintStart_toStartOf="@+id/text_name"
+        app:layout_constraintTop_toBottomOf="@+id/text_name" />
+
+    <TextView
+        android:id="@+id/text_orbit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Orbit"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintEnd_toEndOf="@+id/text_orbit_title"
+        app:layout_constraintStart_toStartOf="@+id/text_orbit_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_orbit_title" />
+
+    <TextView
+        android:id="@+id/text_gravity_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/gravity"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:layout_constraintEnd_toEndOf="@+id/text_orbit"
+        app:layout_constraintStart_toStartOf="@+id/text_orbit"
+        app:layout_constraintTop_toBottomOf="@+id/text_orbit" />
+
+    <TextView
+        android:id="@+id/text_gravity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Orbit"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintEnd_toEndOf="@+id/text_gravity_title"
+        app:layout_constraintStart_toStartOf="@+id/text_gravity_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_gravity_title" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
