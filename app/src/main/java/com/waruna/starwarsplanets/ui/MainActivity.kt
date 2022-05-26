@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.waruna.starwarsplanets.R
 import com.waruna.starwarsplanets.adapters.PlanetsAdapter
 import com.waruna.starwarsplanets.databinding.ActivityMainBinding
 import com.waruna.starwarsplanets.models.Planet
@@ -73,9 +74,9 @@ class MainActivity : AppCompatActivity(), (Planet) -> Unit {
                 ResourceState.ERROR -> {
                     hideProgress()
                     val dialog = AlertDialog.Builder(this)
-                        .setTitle("Alert")
+                        .setTitle(getString(R.string.alert))
                         .setMessage(it.message)
-                        .setPositiveButton("OK") { _, _ -> }
+                        .setPositiveButton(getString(R.string.ok)) { _, _ -> }
                         .create()
                     dialog.show()
                 }

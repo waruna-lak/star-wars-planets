@@ -4,4 +4,6 @@
     <string name="orbital_period">Orbital Period</string>
     <string name="gravity">Gravity</string>
     <string name="details">Details</string>
+    <string name="alert">Alert</string>
+    <string name="ok">OK</string>
 </resources>
