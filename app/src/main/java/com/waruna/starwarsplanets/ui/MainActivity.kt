@@ -1,6 +1,5 @@
 package com.waruna.starwarsplanets.ui
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -31,6 +30,19 @@ class MainActivity : AppCompatActivity(), (Planet) -> Unit {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initViews()
+
+        model.liveDataPlanets.observe(this) { handlePlanets(it) }
+        model.getPlanets()
+    }
+
+    override fun invoke(planet: Planet) {
+        val intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra(EXTRA_PLANET, planet)
+        startActivity(intent)
+    }
+
+    private fun initViews() {
         planetsAdapter = PlanetsAdapter(mutableListOf(), this@MainActivity)
         binding.recyclerPlanets.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
@@ -48,15 +60,6 @@ class MainActivity : AppCompatActivity(), (Planet) -> Unit {
                 override fun isLoading(): Boolean = model.isLoading
             })
         }
-
-        model.liveDataPlanets.observe(this) { handlePlanets(it) }
-        model.getPlanets()
-    }
-
-    override fun invoke(planet: Planet) {
-        val intent = Intent(this, DetailsActivity::class.java)
-        intent.putExtra(EXTRA_PLANET, planet)
-        startActivity(intent)
     }
 
     private fun handlePlanets(resource: Resource<List<Planet>>) {
